@@ -47,7 +47,7 @@ def main():
 	test_inputs_fn=tf.estimator.inputs.numpy_input_fn(x={"x":np.array(test_set.data)},y=np.array(test_set.target),num_epochs=1,shuffle=False)
 
 	#Evaluate accuracy
-	accuracy_score=classifier.evaluate(input_fn=test_inputs_fn)["accuracy"]
+	accuracy_score=classifier.evaluate(input_fn=test_inputs_fn)["accuracy"]          
 	print("\nTest Accuracy:{0:f}\n".format(accuracy_score))
 if __name__=="__main__":
 	main()
