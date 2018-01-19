@@ -1,18 +1,34 @@
 # tensorflow
 
-## tensorboard
+## code details
+- CNN-TensorFlow-mnist 根据tensorboard教程官网Deep MNIST for Experts中Build a Multilayer Convolutional Network部分代码所写，原文链接为：https://www.tensorflow.org/get_started/mnist/pros
+网络为两层卷积加两层全连接，在原代码的基础上加了少量tensorboard的内容，用来练习tensorboard的使用。
+- DNN-Iris 根据TensorFlow官网教程练习使用tf.estimator。
+- AlxeNet 总共包括8层，其中前5层convolutional，3层full-connected。
+## Solved Problems
 
 - **关于tensorboard不显示问题**
-本人测试存放events文件的目录必须在c盘，根据网上说明tensorflow运行后的events文件的路径需要在python启动的时的路径下。 
-例如在windows 启动tensorboard的路径为 C:\Users\Administrator> 
-则events文件必须在该文件下。
 
+	本人测试存放events文件的目录必须在c盘，根据网上说明tensorflow运行后的events文件的路径需要在python启动的时的路径下。 
+	例如在windows 启动tensorboard的路径为 C:\Users\Administrator> 
+	则events文件必须在该文件下。
+- **关于ImportError问题**
+	
+	TensorFlow一直处于更新之中，更新之后可能会有些模块的位置或者名字发生改变，笔者在学习过程中就遇到了*from tensorflow.contrib.cudnn_rnn.python.layers import cudnn_rnn
+ImportError: No module named 'tensorflow.contrib.cudnn_rnn.python.layers'*的错误，解决方法如下：
+```python
+$ python
+$ import tensorflow
+$ print(dir(tensorflow.contrib))
+```
+输出后可以看到cudnn_rnn就在tensorflow.contrib中，所以直接使用*from tensorflow.contrib import cudnn_rnn*就行
 ## others
 - **PCA（Principal Component Analysis）**
 
 	PCA是一种常用的数据分析方法PCA 通过线性变换将原始数据变换为一组各维度线性无关的表示，可用于提取数据的主要特征分量，常用于高维数据的降维。
 
 	一般的，如果我们有M个N维向量，想将其转化为R个N维向量表示新的空间中，那么首先将R个基按行组成矩阵A，然后将向量按列组成矩阵B，那么两个矩阵的乘积AB就是变换的结果，其中AB的第m列为A中第m列变换后的结果。
+	
 	$$\begin{pmatrix}
 	  p_1 \\
 	  p_2 \\
